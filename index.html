@@ -29,10 +29,10 @@
             </div>
         </form>
         <div class="weather-status text-white text-center">
-            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
-            <h1 id="address"></h1>
-            <h3><span id="temp">38.06</span>&deg;C</h3>
-            <h1 class="lead">Clouds</h1>
+            <img id="icon" src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <h1 id="address">Dhaka</h1>
+            <h3><span id="temp">38.6</span>&deg;C</h3>
+            <h1 id="weather" class="lead">Cloud</h1>
         </div>
     </div>
 <script>
@@ -46,7 +46,10 @@
         .then(data => {
             console.log(data);
             document.getElementById('address').innerText = textBox;
-            document.getElementById('temp').innerText = data.main.temp;
+            document.getElementById('temp').innerText = Math.ceil(data.main.temp);
+            document.getElementById('weather').innerText = data.weather[0].main;
+            document.getElementById('icon').setAttribute('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+
 
         })
     })
