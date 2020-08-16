@@ -22,9 +22,9 @@
     <div class="container">
         <form class="col-md-6 m-auto py-5">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter a location for Weather ...">
+                <input id="text-Box" type="text" class="form-control" placeholder="Enter a location for Weather ...">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-danger">Search</button>
+                    <button id="search-button" type="button" class="btn btn-danger">Search</button>
                 </div>
             </div>
         </form>
@@ -35,7 +35,20 @@
             <h1 class="lead">Clouds</h1>
         </div>
     </div>
+<script>
+    var button = document.getElementById('search-button');
+    button.addEventListener('click',function(){
+        // console.log('clicked');
 
+        var textBox = document.getElementById('text-Box').value;
+        fetch('api.openweathermap.org/data/2.5/weather?q={$textBox}&appid={0df271e29fdb461b5e809a4ce6b58dfd}')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+    })
+
+</script>
 </body>
 
 </html>
