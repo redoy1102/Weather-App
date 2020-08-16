@@ -41,10 +41,10 @@
         // console.log('clicked');
     
         var textBox = document.getElementById('text-Box').value;
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${textBox}&appid=0df271e29fdb461b5e809a4ce6b58dfd`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${textBox}&units=metric&appid=0df271e29fdb461b5e809a4ce6b58dfd`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             document.getElementById('address').innerText = textBox;
             document.getElementById('temp').innerText = Math.ceil(data.main.temp);
             document.getElementById('weather').innerText = data.weather[0].main;
