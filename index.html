@@ -30,8 +30,8 @@
         </form>
         <div class="weather-status text-white text-center">
             <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
-            <h1>Dhaka</h1>
-            <h3><span>38.06</span>&deg;C</h3>
+            <h1 id="address"></h1>
+            <h3><span id="temp">38.06</span>&deg;C</h3>
             <h1 class="lead">Clouds</h1>
         </div>
     </div>
@@ -39,12 +39,15 @@
     var button = document.getElementById('search-button');
     button.addEventListener('click',function(){
         // console.log('clicked');
-
+    
         var textBox = document.getElementById('text-Box').value;
-        fetch('api.openweathermap.org/data/2.5/weather?q={$textBox}&appid={0df271e29fdb461b5e809a4ce6b58dfd}')
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${textBox}&appid=0df271e29fdb461b5e809a4ce6b58dfd`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            document.getElementById('address').innerText = textBox;
+            document.getElementById('temp').innerText = data.main.temp;
+
         })
     })
 
